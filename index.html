@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title">Narita Private Car — Airport Chauffeur</title>
+<meta name="description" data-i18n-meta="meta.desc" content="Private airport chauffeur from Narita. Fixed-price rides to Tokyo, Disney and more. Multilingual drivers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== ヘッダー（ブランド＋言語切替＋予約ボタン） ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">NARITA</span>
+      <span class="brand-sub" data-i18n="brand.tag">PRIVATE&nbsp;CAR</span>
+    </a>
+    <div class="header-right">
+      <div class="lang-select">
+        <svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0c2.5 2.5 3.5 6 3.5 10S14.5 19.5 12 22M12 2C9.5 4.5 8.5 8 8.5 12S9.5 19.5 12 22M2.5 9h19M2.5 15h19"/></svg>
+        <select id="langSelect" aria-label="Language">
+          <option value="en">English</option>
+          <option value="zh-CN">简体中文</option>
+          <option value="zh-TW">繁體中文</option>
+          <option value="ko">한국어</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
+      <a href="#book" class="btn btn-gold btn-sm" data-i18n="nav.book">Book</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="badge" data-i18n="hero.badge">Airport Private Chauffeur</span>
+    <h1 class="hero-title" data-i18n="hero.title">Narita Airport, on your terms.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Fixed-price private cars between Narita and Tokyo, Disney and beyond. English-speaking drivers, flight tracking, door to door.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-gold" data-i18n="hero.cta">Reserve your ride</a>
+      <a href="#plans" class="btn btn-ghost" data-i18n="hero.plans">See plans</a>
+    </div>
+    <p class="hero-note" data-i18n="hero.note">No payment now — we confirm your ride by email.</p>
+  </div>
+</section>
+
+<!-- ===== 安心ポイント ===== -->
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" class="ic-lg"><path d="M12 1l9 4v6c0 5-3.8 9.7-9 11-5.2-1.3-9-6-9-11V5l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h3 data-i18n="trust.fixed">Fixed price</h3>
+      <p data-i18n="trust.fixedD">The price you see is the price you pay. No meter, no surprises.</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" class="ic-lg"><path d="M12 3a4 4 0 110 8 4 4 0 010-8z"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <h3 data-i18n="trust.lang">Multilingual driver</h3>
+      <p data-i18n="trust.langD">Drivers who speak English. Optional interpreter on board.</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" class="ic-lg"><path d="M2 16l9-3 4-9 2 1-2 9 7 2v2l-9-2-3 6-2-1 1-6-7 2z"/></svg>
+      <h3 data-i18n="trust.flight">Flight tracking</h3>
+      <p data-i18n="trust.flightD">We watch your flight. Delays are fine — your driver waits.</p>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" class="ic-lg"><path d="M3 21V10l9-7 9 7v11h-6v-6H9v6z"/></svg>
+      <h3 data-i18n="trust.door">Door to door</h3>
+      <p data-i18n="trust.doorD">From the arrival gate straight to your hotel lobby.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== プラン ===== -->
+<section class="plans" id="plans">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2 data-i18n="plans.title">Choose your plan</h2>
+      <p data-i18n="plans.sub">Clear fixed fares. Customise anything in the request form.</p>
+    </header>
+
+    <div class="plan-grid">
+      <!-- プラン1 -->
+      <article class="plan-card">
+        <h3 class="plan-name" data-i18n="plan1.name">Narita ⇄ Tokyo Hotel</h3>
+        <p class="plan-route" data-i18n="plan1.route">Narita Airport — central Tokyo hotel</p>
+        <div class="plan-price"><span class="from" data-i18n="plan.from">from</span> ¥30,000</div>
+        <ul class="plan-feat">
+          <li data-i18n="plan1.f1">Up to 4 passengers + luggage</li>
+          <li data-i18n="plan1.f2">Meet & greet at arrivals</li>
+          <li data-i18n="plan1.f3">60 min free waiting included</li>
+        </ul>
+        <button class="btn btn-outline plan-pick" data-plan="narita-tokyo" data-i18n="plan.select">Select this plan</button>
+      </article>
+
+      <!-- プラン2（人気） -->
+      <article class="plan-card featured">
+        <span class="ribbon" data-i18n="plan.popular">Most popular</span>
+        <h3 class="plan-name" data-i18n="plan2.name">Narita → Disney → Tokyo</h3>
+        <p class="plan-route" data-i18n="plan2.route">Narita — Tokyo Disney Resort — Tokyo hotel</p>
+        <div class="plan-price"><span class="from" data-i18n="plan.from">from</span> ¥48,000</div>
+        <ul class="plan-feat">
+          <li data-i18n="plan2.f1">Stop at Disney on the way in</li>
+          <li data-i18n="plan2.f2">Luggage stays safely in the car</li>
+          <li data-i18n="plan2.f3">Flexible drop-off after the park</li>
+        </ul>
+        <button class="btn btn-gold plan-pick" data-plan="narita-disney-tokyo" data-i18n="plan.select">Select this plan</button>
+      </article>
+
+      <!-- プラン3 -->
+      <article class="plan-card">
+        <h3 class="plan-name" data-i18n="plan3.name">Tokyo Sightseeing Charter</h3>
+        <p class="plan-route" data-i18n="plan3.route">Hourly private car — go anywhere</p>
+        <div class="plan-price"><span class="from" data-i18n="plan.from">from</span> ¥9,000<span class="per" data-i18n="plan.perHour"> / hour</span></div>
+        <ul class="plan-feat">
+          <li data-i18n="plan3.f1">Minimum 4 hours</li>
+          <li data-i18n="plan3.f2">Custom route, your pace</li>
+          <li data-i18n="plan3.f3">Driver guidance in English</li>
+        </ul>
+        <button class="btn btn-outline plan-pick" data-plan="tokyo-charter" data-i18n="plan.select">Select this plan</button>
+      </article>
+    </div>
+
+    <!-- 通訳オプション帯 -->
+    <div class="addon">
+      <div class="addon-text">
+        <h3 data-i18n="addon.title">Add an on-board interpreter</h3>
+        <p data-i18n="addon.desc">A bilingual interpreter rides with you — perfect for shopping, hospitals or meetings.</p>
+      </div>
+      <div class="addon-price">+¥12,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 利用の流れ ===== -->
+<section class="howit">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2 data-i18n="how.title">How it works</h2>
+    </header>
+    <div class="step-grid">
+      <div class="step"><span class="step-no">1</span><h3 data-i18n="how.s1t">Send a request</h3><p data-i18n="how.s1d">Pick a plan and tell us your flight and hotel. No payment yet.</p></div>
+      <div class="step"><span class="step-no">2</span><h3 data-i18n="how.s2t">We confirm</h3><p data-i18n="how.s2d">We email you the final fare and driver details within 24 hours.</p></div>
+      <div class="step"><span class="step-no">3</span><h3 data-i18n="how.s3t">Ride & relax</h3><p data-i18n="how.s3d">Your driver meets you at arrivals. Pay on confirmation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 予約リクエストフォーム ===== -->
+<section class="book" id="book">
+  <div class="wrap book-inner">
+    <header class="sec-head">
+      <h2 data-i18n="form.title">Reservation request</h2>
+      <p data-i18n="form.sub">We reply within 24 hours. No charge until you confirm.</p>
+    </header>
+
+    <form id="bookingForm" class="form-grid" novalidate>
+      <div class="field">
+        <label data-i18n="form.name">Full name</label>
+        <input type="text" name="name" data-i18n-ph="ph.name" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label data-i18n="form.email">Email</label>
+        <input type="email" name="email" data-i18n-ph="ph.email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="field">
+        <label data-i18n="form.plan">Plan</label>
+        <select name="plan" required>
+          <option value="" data-i18n="opt.choose">— Choose a plan —</option>
+          <option value="narita-tokyo" data-i18n="plan1.name">Narita ⇄ Tokyo Hotel</option>
+          <option value="narita-disney-tokyo" data-i18n="plan2.name">Narita → Disney → Tokyo</option>
+          <option value="tokyo-charter" data-i18n="plan3.name">Tokyo Sightseeing Charter</option>
+        </select>
+      </div>
+      <div class="field">
+        <label data-i18n="form.lang">Preferred language</label>
+        <select name="language">
+          <option value="English">English</option>
+          <option value="简体中文">简体中文</option>
+          <option value="繁體中文">繁體中文</option>
+          <option value="한국어">한국어</option>
+          <option value="日本語">日本語</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label data-i18n="form.date">Date</label>
+        <input type="date" name="date" required>
+      </div>
+      <div class="field">
+        <label data-i18n="form.time">Pick-up time</label>
+        <input type="time" name="time" required>
+      </div>
+
+      <div class="field">
+        <label data-i18n="form.flight">Flight number</label>
+        <input type="text" name="flight" data-i18n-ph="ph.flight" placeholder="e.g. NH106">
+      </div>
+      <div class="field">
+        <label data-i18n="form.pax">Passengers</label>
+        <input type="number" name="pax" min="1" max="9" value="2" required>
+      </div>
+
+      <div class="field">
+        <label data-i18n="form.pickup">Pick-up location</label>
+        <input type="text" name="pickup" data-i18n-ph="ph.pickup" placeholder="Narita Airport Terminal 1">
+      </div>
+      <div class="field">
+        <label data-i18n="form.dropoff">Drop-off location</label>
+        <input type="text" name="dropoff" data-i18n-ph="ph.dropoff" placeholder="Hotel name / address">
+      </div>
+
+      <div class="field">
+        <label data-i18n="form.luggage">Luggage (large bags)</label>
+        <input type="number" name="luggage" min="0" max="20" value="2">
+      </div>
+      <div class="field check-field">
+        <label class="check">
+          <input type="checkbox" name="interpreter" value="Yes">
+          <span data-i18n="form.interpreter">Add an on-board interpreter (+¥12,000)</span>
+        </label>
+      </div>
+
+      <div class="field field-full">
+        <label data-i18n="form.notes">Notes / special requests</label>
+        <textarea name="notes" rows="3" data-i18n-ph="ph.notes" placeholder="Child seat, extra stop, etc."></textarea>
+      </div>
+
+      <div class="field field-full">
+        <button type="submit" class="btn btn-gold btn-block" id="submitBtn" data-i18n="form.submit">Send request</button>
+        <p class="form-privacy" data-i18n="form.privacy">By sending, you agree to be contacted by email about this request.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-brand">NARITA PRIVATE CAR</p>
+    <p class="foot-legal" data-i18n="footer.legal">Private chauffeur service. Listed fares are estimates; the final fare is confirmed by email before your ride.</p>
+    <p class="foot-rights">© 2026 NARITA PRIVATE CAR</p>
+  </div>
+</footer>
+
+<!-- 送信完了モーダル -->
+<div class="modal" id="thanksModal" hidden>
+  <div class="modal-box">
+    <svg viewBox="0 0 24 24" class="ic-check"><circle cx="12" cy="12" r="11"/><path d="M7 12l3.5 3.5L17 9"/></svg>
+    <h3 data-i18n="thx.title">Request received</h3>
+    <p data-i18n="thx.body">Thank you. We will email you the confirmed fare and driver details within 24 hours.</p>
+    <button class="btn btn-gold" id="thanksClose" data-i18n="thx.close">Close</button>
+  </div>
+</div>
+
+<!-- Googleフォーム送信用の隠しiframe（ページ遷移を防ぐ） -->
+<iframe name="gform_target" id="gform_target" style="display:none" title="hidden"></iframe>
+
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>
