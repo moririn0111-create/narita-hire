@@ -1,0 +1,180 @@
+/* =========================================================
+   iOS風インタラクティブ・デモ（GO風配車UI）
+   ・style.css の :root 変数と .btn を再利用
+   ・地図／稼働ハイヤー／メニュー／プラン・日時／決済画面 まで通し
+   ========================================================= */
+
+.demo-body{
+  background:radial-gradient(120% 90% at 50% 0%,#15151b,#070708);
+  color:var(--text);font-family:var(--font);min-height:100vh;
+  display:flex;align-items:center;justify-content:center;padding:40px 20px;
+}
+.demo-stage{display:flex;align-items:center;gap:60px;flex-wrap:wrap;justify-content:center}
+
+/* ---- 説明サイド ---- */
+.demo-side{max-width:360px}
+.demo-side h1{font-size:clamp(26px,3.4vw,36px);font-weight:700;line-height:1.2;margin:18px 0 14px}
+.demo-side p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:24px}
+.demo-side .badge{display:inline-block}
+
+/* ---- iPhone 風フレーム ---- */
+.phone{
+  width:330px;height:690px;border-radius:54px;flex:none;
+  background:linear-gradient(180deg,#23232a,#0c0c0f);
+  border:1px solid #3a3a42;padding:13px;
+  box-shadow:0 40px 90px rgba(0,0,0,.6),inset 0 0 0 2px #000;position:relative;
+}
+.phone-notch{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  width:118px;height:30px;background:#000;border-radius:18px;z-index:30;
+}
+.screen{
+  position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;
+  background:#0a0d12;display:flex;flex-direction:column;
+}
+.statusbar{
+  height:46px;display:flex;align-items:flex-end;justify-content:space-between;
+  padding:0 26px 6px;font-size:13px;font-weight:600;color:#fff;z-index:20;flex:none;
+}
+.sb-icons{letter-spacing:2px;font-size:11px}
+.appbar{
+  height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px;background:rgba(10,13,18,.7);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);z-index:20;
+}
+.appbar-title{font-size:14px;letter-spacing:.16em;color:var(--text)}
+.appbar-title b{color:var(--gold)}
+.iconbtn{
+  background:transparent;border:0;color:var(--text);font-size:19px;
+  width:38px;height:38px;border-radius:50%;cursor:pointer;
+}
+.iconbtn:active{background:rgba(255,255,255,.08)}
+
+/* ---- ビュー（画面切替） ---- */
+.stagebox{position:relative;flex:1;overflow:hidden}
+.view{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .32s ease;background:#0a0d12;
+}
+.view.is-active{transform:translateX(0)}
+.view.is-prev{transform:translateX(-26%)}
+.view-head{display:flex;align-items:center;gap:10px;padding:14px 16px}
+.view-head h3{font-size:17px;font-weight:700}
+.back{background:transparent;border:0;color:var(--gold);font-size:24px;cursor:pointer;line-height:1}
+.scroll{flex:1;overflow-y:auto;padding:4px 16px}
+
+/* ---- 地図（GO風・稼働ハイヤー表示） ---- */
+.view-map{transform:translateX(0)}
+.map{position:relative;flex:1;overflow:hidden;
+  background:radial-gradient(130% 80% at 50% 0%,#13202e,#0a0d12)}
+.map-svg{position:absolute;inset:0;width:100%;height:100%}
+.maptag{position:absolute;font-size:10px;letter-spacing:.14em;color:var(--muted);
+  background:rgba(0,0,0,.5);padding:3px 8px;border-radius:6px;border:1px solid var(--line)}
+.tag-narita{top:14%;right:10%}
+.tag-tokyo{bottom:30%;left:9%}
+.car{position:absolute;width:22px;height:12px;border-radius:4px;
+  background:var(--gold);box-shadow:0 0 12px rgba(201,169,106,.85);
+  offset-rotate:auto;}
+.car::after{content:"";position:absolute;inset:0;border-radius:4px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent)}
+.c1{offset-path:path('M 300 70 C 250 150, 210 180, 150 240 S 70 360, 40 430');
+  animation:drive 9s linear infinite}
+.c2{offset-path:path('M 320 200 C 260 230, 230 280, 170 300 S 60 330, 20 300');
+  animation:drive 12s linear infinite;animation-delay:-3s}
+.c3{offset-path:path('M 40 420 C 90 360, 130 320, 180 250 S 270 130, 300 60');
+  animation:drive 14s linear infinite;animation-delay:-6s}
+@keyframes drive{from{offset-distance:0%}to{offset-distance:100%}}
+@media(prefers-reduced-motion:reduce){.car{animation:none}}
+.mepin{position:absolute;left:46%;top:54%;width:16px;height:16px;border-radius:50%;
+  background:#3ad29f;border:2px solid #fff;box-shadow:0 0 0 7px rgba(58,210,159,.22)}
+
+/* ---- ボトムシート ---- */
+.sheet{
+  background:rgba(18,18,22,.94);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);border-radius:20px 20px 0 0;
+  padding:14px 18px 20px;flex:none;
+}
+.sheet-grab{width:42px;height:4px;border-radius:4px;background:#3a3a42;margin:0 auto 14px}
+.sheet-eyebrow{color:var(--gold);font-size:12px;letter-spacing:.06em;margin-bottom:6px}
+.sheet-eyebrow::before{content:"●";font-size:8px;margin-right:7px;vertical-align:middle}
+.sheet-title{font-size:18px;font-weight:700;margin-bottom:16px}
+
+/* ---- プラン選択・日時 ---- */
+.opt{display:flex;align-items:center;gap:12px;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--gold);background:#16130c}
+.opt input{accent-color:var(--gold);width:18px;height:18px;flex:none}
+.opt span{display:flex;flex-direction:column;flex:1}
+.opt b{font-size:14px}
+.opt i{font-size:13px;color:var(--gold);font-style:normal;margin-top:3px}
+.row2{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 2px;border-bottom:1px solid var(--line)}
+.row2 label{font-size:13px;color:var(--muted)}
+.row2 input{background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  color:var(--text);padding:10px 12px;font-family:var(--font);font-size:14px;outline:none}
+.row2 input:focus{border-color:var(--gold)}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--text);font-size:16px;cursor:pointer}
+.step span{min-width:18px;text-align:center;font-weight:700}
+.view .btn{margin:14px 16px 18px}
+
+/* ---- 確認 ---- */
+.summary{margin:8px 16px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:16px;font-size:14px;line-height:2}
+.summary .k{color:var(--muted)}
+.summary .v{float:right;color:var(--text);font-weight:600}
+.fixed-chip{text-align:center;margin:14px 16px;color:var(--muted);font-size:13px}
+.fixed-chip b{color:var(--gold);font-size:18px}
+
+/* ---- 決済画面 ---- */
+.pay-amount{text-align:center;font-size:38px;font-weight:700;color:var(--text);margin:24px 0 6px}
+.pay-cur{display:block;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;margin-bottom:24px}
+.paybtn{display:flex;align-items:center;justify-content:center;gap:8px;
+  margin:0 16px 12px;height:50px;border-radius:12px;border:0;cursor:pointer;
+  font-size:16px;font-weight:600;background:#fff;color:#000}
+.orline{display:flex;align-items:center;gap:12px;color:var(--muted);
+  font-size:12px;margin:14px 16px}
+.orline::before,.orline::after{content:"";flex:1;height:1px;background:var(--line)}
+.cardrow{margin:0 16px 14px;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:15px;font-size:15px;letter-spacing:2px;color:var(--text);
+  display:flex;justify-content:space-between}
+.cardrow span{color:var(--muted);letter-spacing:0;font-size:12px}
+.pay-note{text-align:center;color:var(--muted);font-size:11px;margin:8px 22px 0}
+
+/* ---- 完了 ---- */
+.view-done{align-items:center;justify-content:center;text-align:center;padding:30px}
+.done-check{width:74px;height:74px;border-radius:50%;border:2px solid #3ad29f;color:#3ad29f;
+  display:flex;align-items:center;justify-content:center;font-size:38px;margin-bottom:22px;
+  animation:pop .3s ease}
+.view-done h3{font-size:21px;margin-bottom:10px}
+.view-done p{color:var(--muted);font-size:14px;margin-bottom:26px;max-width:240px}
+
+/* ---- ドロワー（メニュー） ---- */
+.drawer{
+  position:absolute;inset:0 30% 0 0;background:rgba(8,8,10,.97);z-index:40;
+  transform:translateX(-105%);transition:transform .3s ease;padding:60px 22px;
+  display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line);width:74%;
+}
+.drawer.open{transform:translateX(0)}
+.drawer .dh{font-size:13px;letter-spacing:.2em;color:var(--gold);margin-bottom:18px}
+.drawer a{color:var(--text);text-decoration:none;padding:14px 6px;
+  border-bottom:1px solid var(--line);font-size:15px;cursor:pointer}
+.drawer a:active{color:var(--gold)}
+.dlang{margin-top:auto;padding-top:16px}
+.dlang select{width:100%;background:var(--surface);border:1px solid var(--line);
+  color:var(--text);border-radius:10px;padding:11px;font-family:var(--font);font-size:14px}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:39;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.show{opacity:1;pointer-events:auto}
+
+/* 概念デモの注記バー */
+.demo-tag{position:absolute;left:0;right:0;bottom:0;z-index:25;
+  background:rgba(201,169,106,.14);color:var(--gold);text-align:center;
+  font-size:10px;letter-spacing:.05em;padding:5px}
+
+@media(max-width:780px){
+  .demo-stage{gap:30px}
+  .demo-side{order:2;text-align:center}
+  .phone{transform:scale(.94)}
+}

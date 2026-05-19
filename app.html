@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="demo.metaTitle">NARITA PRIVATE — App Demo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/demo.css">
+</head>
+<body class="demo-body">
+<div class="demo-stage">
+
+  <div class="demo-side">
+    <a href="index.html" class="badge badge-live" data-i18n="demo.concept">● Concept demo</a>
+    <h1 data-i18n="demo.h1">This is how the app will work.</h1>
+    <p data-i18n="demo.p1">A live map shows nearby private chauffeurs. Open the menu, pick a plan and time, confirm, and pay — all in your language. Tap around the phone on the right.</p>
+    <a href="index.html" class="btn btn-ghost" data-i18n="demo.toSite">← Back to the campaign site</a>
+  </div>
+
+  <div class="phone">
+    <div class="phone-notch"></div>
+    <div class="screen">
+      <div class="statusbar"><span class="sb-time">9:41</span><span class="sb-icons">●●● 􀙇 100%</span></div>
+      <div class="appbar">
+        <button class="iconbtn" id="menuBtn" aria-label="menu">☰</button>
+        <span class="appbar-title">NARITA <b>PRIVATE</b></span>
+        <button class="iconbtn" id="langBtn" aria-label="language">🌐</button>
+      </div>
+
+      <div class="stagebox">
+
+        <!-- 地図（GO風・稼働ハイヤー） -->
+        <section class="view view-map is-active" id="viewMap">
+          <div class="map">
+            <svg class="map-svg" viewBox="0 0 320 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <g fill="none" stroke="#1d2a38" stroke-width="10" stroke-linecap="round">
+                <path d="M300 60 C 250 150 210 180 150 240 S 70 360 40 430"/>
+                <path d="M320 200 C 260 230 230 280 170 300 S 60 330 20 300"/>
+                <path d="M40 420 C 90 360 130 320 180 250 S 270 130 300 60"/>
+                <path d="M120 0 L 150 240 200 480"/>
+              </g>
+              <g fill="none" stroke="#26384a" stroke-width="2" stroke-dasharray="2 7">
+                <path d="M300 60 C 250 150 210 180 150 240 S 70 360 40 430"/>
+              </g>
+            </svg>
+            <span class="maptag tag-narita">NRT</span>
+            <span class="maptag tag-tokyo" data-i18n="demo.tokyo">TOKYO</span>
+            <span class="car c1"></span>
+            <span class="car c2"></span>
+            <span class="car c3"></span>
+            <span class="mepin"></span>
+          </div>
+          <div class="sheet">
+            <div class="sheet-grab"></div>
+            <p class="sheet-eyebrow" data-i18n="demo.near">3 chauffeurs nearby</p>
+            <h3 class="sheet-title" data-i18n="demo.book">Book your private chauffeur</h3>
+            <button class="btn btn-gold btn-block" data-go="viewPlan" data-i18n="demo.choosePlan">Choose a plan</button>
+          </div>
+          <div class="demo-tag" data-i18n="demo.tagline">Concept demo · not a live service yet</div>
+        </section>
+
+        <!-- プラン＋日時 -->
+        <section class="view" id="viewPlan">
+          <div class="view-head"><button class="back" data-back aria-label="back">‹</button><h3 data-i18n="demo.planTitle">Plan &amp; pick-up</h3></div>
+          <div class="scroll">
+            <label class="opt"><input type="radio" name="dplan" value="Narita ⇄ Tokyo Hotel" data-price="30000" checked>
+              <span><b data-i18n="plan1.name">Narita ⇄ Tokyo Hotel</b><i>¥30,000</i></span></label>
+            <label class="opt"><input type="radio" name="dplan" value="Narita → Disney → Tokyo" data-price="48000">
+              <span><b data-i18n="plan2.name">Narita → Disney → Tokyo</b><i>¥48,000</i></span></label>
+            <label class="opt"><input type="radio" name="dplan" value="Tokyo Sightseeing Charter" data-price="36000">
+              <span><b data-i18n="plan3.name">Tokyo Sightseeing Charter</b><i>¥9,000 / h ×4</i></span></label>
+            <div class="row2"><label data-i18n="demo.date">Date</label><input type="date" id="dDate"></div>
+            <div class="row2"><label data-i18n="demo.time">Pick-up time</label><input type="time" id="dTime" value="10:00"></div>
+            <div class="row2"><label data-i18n="demo.pax">Passengers</label>
+              <div class="step"><button type="button" data-step="-1">−</button><span id="dPax">2</span><button type="button" data-step="1">+</button></div></div>
+            <div class="row2"><label data-i18n="demo.interp">On-board interpreter</label>
+              <div class="step"><label class="opt" style="margin:0;padding:8px 12px"><input type="checkbox" id="dInterp" data-price="12000"><span><b data-i18n="demo.add">Add</b></span></label></div></div>
+          </div>
+          <button class="btn btn-gold btn-block" data-go="viewConfirm" data-i18n="demo.continue">Continue</button>
+        </section>
+
+        <!-- 確認 -->
+        <section class="view" id="viewConfirm">
+          <div class="view-head"><button class="back" data-back aria-label="back">‹</button><h3 data-i18n="demo.confirm">Confirm</h3></div>
+          <div class="summary" id="dSummary"></div>
+          <p class="fixed-chip"><span data-i18n="demo.fixed">Fixed price</span> · <b id="dPrice">¥30,000</b></p>
+          <button class="btn btn-gold btn-block" id="toPay" data-i18n="demo.pay">Reserve &amp; pay</button>
+        </section>
+
+        <!-- 決済 -->
+        <section class="view" id="viewPay">
+          <div class="view-head"><button class="back" data-back aria-label="back">‹</button><h3 data-i18n="demo.payTitle">Payment</h3></div>
+          <div class="pay-amount" id="dPayAmt">¥30,000</div>
+          <span class="pay-cur" data-i18n="demo.total">TOTAL · FIXED</span>
+          <button class="paybtn" id="payApple"> &nbsp;Pay</button>
+          <div class="orline"><span data-i18n="demo.or">or pay by card</span></div>
+          <div class="cardrow">•••• •••• •••• 4242 <span>VISA</span></div>
+          <button class="btn btn-gold btn-block" id="payNow" data-i18n="demo.payNow">Pay now</button>
+          <p class="pay-note" data-i18n="demo.payNote">Demo only. After launch this connects to Stripe / PayPal / Alipay / WeChat Pay.</p>
+        </section>
+
+        <!-- 完了 -->
+        <section class="view view-done" id="viewDone">
+          <div class="done-check">✓</div>
+          <h3 data-i18n="demo.doneT">Booking confirmed</h3>
+          <p data-i18n="demo.doneB">Your English-speaking chauffeur will meet you at arrivals. (Concept demo)</p>
+          <button class="btn btn-ghost btn-block" id="restart" data-i18n="demo.again">Start over</button>
+        </section>
+
+        <!-- メニュー -->
+        <div class="scrim" id="scrim"></div>
+        <nav class="drawer" id="drawer">
+          <div class="dh">NARITA PRIVATE CAR</div>
+          <a data-go="viewMap" data-i18n="demo.mMap">Live map</a>
+          <a data-go="viewPlan" data-i18n="demo.mBook">Book a ride</a>
+          <a data-go="viewConfirm" data-i18n="demo.mTrips">My booking</a>
+          <a href="index.html" data-i18n="demo.mSite">Back to website</a>
+          <div class="dlang">
+            <select id="langSelect" aria-label="Language">
+              <option value="en">English</option>
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="ko">한국어</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/demo.js"></script>
+</body>
+</html>
