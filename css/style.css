@@ -204,3 +204,33 @@ a{color:inherit;text-decoration:none}
   .header-right{gap:8px}
   .wrap{padding:0 18px}
 }
+
+/* ---------- クラファン用の追加スタイル ---------- */
+.badge-live{
+  border-color:#3ad29f;color:#3ad29f;display:inline-flex;align-items:center;gap:8px;
+}
+.badge-live::before{content:"";width:7px;height:7px;border-radius:50%;background:#3ad29f;
+  box-shadow:0 0 0 0 rgba(58,210,159,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(58,210,159,.55)}70%{box-shadow:0 0 0 9px rgba(58,210,159,0)}100%{box-shadow:0 0 0 0 rgba(58,210,159,0)}}
+
+.story{background:var(--bg);padding:80px 0;border-top:1px solid var(--line)}
+.story-inner{max-width:760px;margin:0 auto;text-align:center}
+.story-inner h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;margin-bottom:20px}
+.story-inner p{color:var(--muted);font-size:17px;line-height:1.85}
+
+.plans.alt{background:var(--surface);border-top:1px solid var(--line)}
+.plans.alt .plan-card{opacity:.92}
+
+.plan-reg{font-size:13px;color:var(--muted);text-decoration:line-through;margin:-14px 0 22px}
+.btn-lg{padding:18px 40px;font-size:17px}
+
+.rw-note{
+  max-width:760px;margin:34px auto 0;font-size:13px;color:var(--muted);
+  text-align:center;line-height:1.8;border:1px solid var(--line);
+  border-radius:12px;padding:18px 22px;background:var(--surface);
+}
+.cf-banner{text-align:center;margin-top:40px}
+
+@media(max-width:620px){
+  .story-inner p{font-size:15px}
+}
