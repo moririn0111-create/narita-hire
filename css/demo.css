@@ -74,19 +74,9 @@
   background:rgba(0,0,0,.5);padding:3px 8px;border-radius:6px;border:1px solid var(--line)}
 .tag-narita{top:14%;right:10%}
 .tag-tokyo{bottom:30%;left:9%}
-.car{position:absolute;width:22px;height:12px;border-radius:4px;
-  background:var(--gold);box-shadow:0 0 12px rgba(201,169,106,.85);
-  offset-rotate:auto;}
-.car::after{content:"";position:absolute;inset:0;border-radius:4px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent)}
-.c1{offset-path:path('M 300 70 C 250 150, 210 180, 150 240 S 70 360, 40 430');
-  animation:drive 9s linear infinite}
-.c2{offset-path:path('M 320 200 C 260 230, 230 280, 170 300 S 60 330, 20 300');
-  animation:drive 12s linear infinite;animation-delay:-3s}
-.c3{offset-path:path('M 40 420 C 90 360, 130 320, 180 250 S 270 130, 300 60');
-  animation:drive 14s linear infinite;animation-delay:-6s}
-@keyframes drive{from{offset-distance:0%}to{offset-distance:100%}}
-@media(prefers-reduced-motion:reduce){.car{animation:none}}
+/* 車（SVG内・animateMotionで道に沿って走行） */
+.car-svg{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(201,169,106,.85))}
+@media(prefers-reduced-motion:reduce){.car-svg animateMotion{display:none}}
 .mepin{position:absolute;left:46%;top:54%;width:16px;height:16px;border-radius:50%;
   background:#3ad29f;border:2px solid #fff;box-shadow:0 0 0 7px rgba(58,210,159,.22)}
 

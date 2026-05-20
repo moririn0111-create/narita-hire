@@ -37,21 +37,42 @@
         <section class="view view-map is-active" id="viewMap">
           <div class="map">
             <svg class="map-svg" viewBox="0 0 320 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <path id="road1" d="M300 60 C 250 150 210 180 150 240 S 70 360 40 430"/>
+                <path id="road2" d="M320 200 C 260 230 230 280 170 300 S 60 330 20 300"/>
+                <path id="road3" d="M40 420 C 90 360 130 320 180 250 S 270 130 300 60"/>
+                <path id="road4" d="M120 0 L 150 240 200 480"/>
+              </defs>
               <g fill="none" stroke="#1d2a38" stroke-width="10" stroke-linecap="round">
-                <path d="M300 60 C 250 150 210 180 150 240 S 70 360 40 430"/>
-                <path d="M320 200 C 260 230 230 280 170 300 S 60 330 20 300"/>
-                <path d="M40 420 C 90 360 130 320 180 250 S 270 130 300 60"/>
-                <path d="M120 0 L 150 240 200 480"/>
+                <use href="#road1"/>
+                <use href="#road2"/>
+                <use href="#road3"/>
+                <use href="#road4"/>
               </g>
               <g fill="none" stroke="#26384a" stroke-width="2" stroke-dasharray="2 7">
-                <path d="M300 60 C 250 150 210 180 150 240 S 70 360 40 430"/>
+                <use href="#road1"/>
+              </g>
+              <!-- 稼働ハイヤー（道に沿って走行・animateMotion） -->
+              <g class="cars">
+                <rect class="car-svg" x="-11" y="-6" width="22" height="12" rx="4">
+                  <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
+                    <mpath href="#road1"/>
+                  </animateMotion>
+                </rect>
+                <rect class="car-svg" x="-11" y="-6" width="22" height="12" rx="4">
+                  <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" begin="-3s">
+                    <mpath href="#road2"/>
+                  </animateMotion>
+                </rect>
+                <rect class="car-svg" x="-11" y="-6" width="22" height="12" rx="4">
+                  <animateMotion dur="14s" repeatCount="indefinite" rotate="auto" begin="-6s">
+                    <mpath href="#road3"/>
+                  </animateMotion>
+                </rect>
               </g>
             </svg>
             <span class="maptag tag-narita">NRT</span>
             <span class="maptag tag-tokyo" data-i18n="demo.tokyo">TOKYO</span>
-            <span class="car c1"></span>
-            <span class="car c2"></span>
-            <span class="car c3"></span>
             <span class="mepin"></span>
           </div>
           <div class="sheet">
