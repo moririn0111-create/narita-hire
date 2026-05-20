@@ -291,17 +291,8 @@ a{color:inherit;text-decoration:none}
   position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;
   background:radial-gradient(120% 70% at 50% 0%,#13202e,#0a0d12);
 }
-.pm-screen .pm-road{position:absolute;inset:0}
-.pm-screen .pm-road i{position:absolute;background:rgba(201,169,106,.35);height:3px;border-radius:3px}
-.pm-r1{top:34%;left:-6%;width:78%;transform:rotate(-13deg)}
-.pm-r2{top:58%;left:18%;width:80%;transform:rotate(9deg)}
-.pm-car{position:absolute;width:16px;height:9px;border-radius:3px;background:var(--gold);
-  box-shadow:0 0 10px rgba(201,169,106,.8)}
-.pm-c1{top:33%;left:18%;animation:pmDrift1 5s linear infinite}
-.pm-c2{top:60%;left:64%;animation:pmDrift2 6.5s linear infinite}
-.pm-c3{top:46%;left:42%;animation:pmDrift1 8s linear infinite reverse}
-@keyframes pmDrift1{from{transform:translate(0,0)}to{transform:translate(70px,-16px)}}
-@keyframes pmDrift2{from{transform:translate(0,0)}to{transform:translate(-66px,12px)}}
+.pm-svg{position:absolute;inset:0;width:100%;height:100%}
+.pm-car-svg{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(201,169,106,.8))}
 .pm-me{position:absolute;top:52%;left:48%;width:12px;height:12px;border-radius:50%;
   background:#3ad29f;box-shadow:0 0 0 6px rgba(58,210,159,.25)}
 .pm-sheet{position:absolute;left:0;right:0;bottom:0;background:rgba(20,20,24,.92);

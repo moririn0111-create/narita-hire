@@ -204,8 +204,31 @@
     </div>
     <a href="app.html" class="phone-mini" aria-label="Open app demo">
       <div class="pm-screen">
-        <div class="pm-road"><i class="pm-r1"></i><i class="pm-r2"></i></div>
-        <span class="pm-car pm-c1"></span><span class="pm-car pm-c2"></span><span class="pm-car pm-c3"></span>
+        <svg class="pm-svg" viewBox="0 0 220 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <path id="pmRoad1" d="M-10 150 Q 80 120 230 220"/>
+            <path id="pmRoad2" d="M-10 320 Q 100 360 230 300"/>
+          </defs>
+          <g fill="none" stroke="rgba(201,169,106,.35)" stroke-width="3" stroke-linecap="round">
+            <use href="#pmRoad1"/>
+            <use href="#pmRoad2"/>
+          </g>
+          <rect class="pm-car-svg" x="-8" y="-4.5" width="16" height="9" rx="3">
+            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#pmRoad1"/>
+            </animateMotion>
+          </rect>
+          <rect class="pm-car-svg" x="-8" y="-4.5" width="16" height="9" rx="3">
+            <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" begin="-2s">
+              <mpath href="#pmRoad2"/>
+            </animateMotion>
+          </rect>
+          <rect class="pm-car-svg" x="-8" y="-4.5" width="16" height="9" rx="3">
+            <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="-4s">
+              <mpath href="#pmRoad1"/>
+            </animateMotion>
+          </rect>
+        </svg>
         <span class="pm-me"></span>
         <div class="pm-sheet">
           <small data-i18n="app.near">3 chauffeurs nearby</small>
